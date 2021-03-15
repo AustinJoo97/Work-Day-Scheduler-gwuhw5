@@ -1,10 +1,13 @@
 let currentDay = $('#currentDay');
 let timeStamps = $('#timeStamps');
 let dailyEvents = $('#dailyEvents');
-let saveButtons = $('#saveButtons')
+let saveButtons = $('#saveButtons');
 let workDayTimes = ['9AM', '10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM']
 let workDayHours = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 
+//This function will run when the page is rendered
+    // It will first render all the timeStamps, dailyEvents textareas, and saveButtons to the viewport
+    // AFTER THIS, IT WILL SEARCH THROUGH LOCALSTORAGE TO FIND ANY PREVIOUSLY SAVED EVENTS AND RENDER THEM TO THEIR APPROPRIATE TIMESLOTS (NEED TO IMPLEMENT)
 function initializer(){
     currentDay.text(moment().format('dddd MMM Do, YYYY'));
 
@@ -25,4 +28,10 @@ function initializer(){
     }
 }
 
+function saveCurrentTimeEvents(event){
+    event.preventDefault();
+
+}
+
 initializer();
+
