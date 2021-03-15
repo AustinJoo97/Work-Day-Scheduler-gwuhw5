@@ -14,14 +14,14 @@ function initializer(){
 
             dailyEvents.append('<textarea class="customScheduleInput" style="border-bottom: 2px solid red"></textarea>');
 
-            saveButtons.append(`<button class="saveBtn customSaveBtn" style="border-bottom: 2px solid grey">Save</button>`)
+            saveButtons.append(`<button class="saveBtn customSaveBtn" style="border-bottom: 2px solid grey">&#128190</button>`)
             break;
         }
         timeStamps.append(`<li class="time-block hour customTimeStamps" id="hour${workDayTimes[i]}">${workDayTimes[i]}</li>`);
 
         dailyEvents.append('<textarea class="customScheduleInput"></textarea>');
 
-        saveButtons.append(`<button class="saveBtn customSaveBtn">Save</button>`)
+        saveButtons.append(`<button class="saveBtn customSaveBtn">&#128190</button>`)
     }
 }
 

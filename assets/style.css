@@ -89,6 +89,7 @@ textarea {
 .customSaveBtn{
   margin-left: -30px;
   border: solid 2px grey;
+  font-size: xx-large
 }
 
 .customSaveBtn:hover{
