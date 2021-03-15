@@ -73,11 +73,26 @@ textarea {
 /* My custom CSS properties */
 #timeStamps li{
   text-align:center;
-  padding: 30px;
+  height: 100px;
+  padding-top: 40px;
   border: solid 2px cyan;
   list-style-type: none;
   border-left: none;
   border-bottom: none;
 }
 
-/*  */
+#dailyEvents li{
+  text-align: center;
+  height: 100px;
+  padding-top: 40px;
+  border: solid 2px red;
+  list-style-type: none;
+  border-bottom: none;
+}
+
+#scheduleInput{
+  width: 100%;
+  height: 100%;
+  margin-top: -40px;
+  border-style: none;
+}
