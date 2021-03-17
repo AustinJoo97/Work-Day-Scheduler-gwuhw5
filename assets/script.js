@@ -3,7 +3,7 @@ let timeStamps = $('#timeStamps');
 let dailyEvents = $('#dailyEvents');
 let saveButtons = $('#saveButtons');
 let workDayTimes = ['9AM', '10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM']
-let workDayHours = [9, 10, 11, 12, 13, 14, 15, 16, 17]; //Military hours
+let workDayHours = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 
 //This function will run when the page is rendered
     // It will first render all the timeStamps, dailyEvents textareas, and saveButtons to the viewport
@@ -16,14 +16,14 @@ function initializer(){
         if(i === workDayTimes.length-1){
             timeStamps.append(`<li class="time-block hour customTimeStamps" style="border-bottom: 2px solid cyan">${workDayTimes[i]}</li>`);
 
-            dailyEvents.append(`<textarea id="hour${workDayHours[i]}events" class="customScheduleInput hour${workDayHours[i]}" style="border-bottom: 2px solid red"></textarea>`);
+            dailyEvents.append(`<textarea id="hour${workDayHours[i]}" class="customScheduleInput hour${workDayHours[i]}" style="border-bottom: 2px solid red"></textarea>`);
 
             saveButtons.append(`<button id="saveHour${workDayHours[i]}events" class="saveBtn customSaveBtn hour${workDayHours[i]}" style="border-bottom: 2px solid grey">&#128190</button>`)
             break;
         }
         timeStamps.append(`<li class="time-block hour customTimeStamps" id="hour${workDayTimes[i]}">${workDayTimes[i]}</li>`);
 
-        dailyEvents.append(`<textarea id="hour${workDayHours[i]}events" class="customScheduleInput hour${workDayHours[i]}"></textarea>`);
+        dailyEvents.append(`<textarea id="hour${workDayHours[i]}" class="customScheduleInput hour${workDayHours[i]}"></textarea>`);
 
         saveButtons.append(`<button id="saveHour${workDayHours[i]}events" class="saveBtn customSaveBtn hour${workDayHours[i]}">&#128190</button>`)
     }
@@ -43,7 +43,7 @@ function initializer(){
         }));
     }
 
-    // This will take all the values from localstorage and render it to the DOM in the appropriate blocks
+    renderAllStoredEvents();
 }
 
 // This function will, upon clicking a save button, save to localstorage the corresponding list of events entered in the textarea adjacent to the button
@@ -69,27 +69,34 @@ function saveCurrentTimeEvents(event){
     // It will then add the string to the object's value at key then save it and return the object
 function saveEvents(currentHourKey, val, obj){
     if(val){
-        if(!obj[currentHourKey]){
-            obj[currentHourKey] = val;
-        } else {
-            let temp = obj[currentHourKey] + ", " + val;
-            obj[currentHourKey] = temp;
-            console.log('saved!')
-        }
+        obj[currentHourKey] = val;
     }
-    console.log(obj)
     return obj;
 }
 
 // This functino will, upon clicking a clear button, reset the localStorage object to its default properties, rendering a new, black schedule
 function clearEvents(){
 
+
+    //NEED TO CODE THIS
+}
+
+// This will take all the values from localstorage and render it to the DOM in the appropriate blocks
+function renderAllStoredEvents(){
+    for(let i = 0; i < workDayHours.length; i++){
+        let hourToRender = `hour${workDayHours[i]}`;
+        let allStoredEvents = JSON.parse(localStorage.getItem("dailyEvents"));
+        dailyEvents.find(`.${hourToRender}`).val(allStoredEvents[hourToRender]);
+    }
+    
 }
 
 // This set interval timer will run every 60 seconds (60000ms) to perform a check to see what the current time is.
     // With each passing hour, the classes of the html dailyEvents item will be changed to correspond to the current time and show the correct colored background noting this change
 setInterval(function(){
 
+
+    // NEED TO CODE THIS
 }, 60000);
 
 
