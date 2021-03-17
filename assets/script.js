@@ -2,12 +2,14 @@ let currentDay = $('#currentDay');
 let timeStamps = $('#timeStamps');
 let dailyEvents = $('#dailyEvents');
 let saveButtons = $('#saveButtons');
+let clearButton = $('#clearAllEvents');
 let workDayTimes = ['9AM', '10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM']
 let workDayHours = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 
+
 //This function will run when the page is rendered
     // It will first render all the timeStamps, dailyEvents textareas, and saveButtons to the viewport
-    // AFTER THIS, IT WILL SEARCH THROUGH LOCALSTORAGE TO FIND ANY PREVIOUSLY SAVED EVENTS AND RENDER THEM TO THEIR APPROPRIATE TIMESLOTS (NEED TO IMPLEMENT)
+    // After this, it will search through localstorage to find any previously saved events and render them to their appropriate timeslots  
 function initializer(){
     currentDay.text(moment().format('dddd MMM Do, YYYY'));
 
@@ -76,9 +78,18 @@ function saveEvents(currentHourKey, val, obj){
 
 // This functino will, upon clicking a clear button, reset the localStorage object to its default properties, rendering a new, black schedule
 function clearEvents(){
-
-
-    //NEED TO CODE THIS
+    localStorage.setItem("dailyEvents", JSON.stringify({
+        hour9: "",
+        hour10: "",
+        hour11: "",
+        hour12: "",
+        hour1: "",
+        hour2: "",
+        hour3: "",
+        hour4: "",
+        hour5: ""
+    }))
+    window.location.reload()
 }
 
 // This will take all the values from localstorage and render it to the DOM in the appropriate blocks
@@ -91,7 +102,7 @@ function renderAllStoredEvents(){
     
 }
 
-// This set interval timer will run every 60 seconds (60000ms) to perform a check to see what the current time is.
+// This set interval timer will run every 60 seconds (60000ms) to perform a check to see what the current time is
     // With each passing hour, the classes of the html dailyEvents item will be changed to correspond to the current time and show the correct colored background noting this change
 setInterval(function(){
 
@@ -102,3 +113,4 @@ setInterval(function(){
 
 initializer();
 saveButtons.on("click", saveCurrentTimeEvents);
+clearButton.on("click", clearEvents);

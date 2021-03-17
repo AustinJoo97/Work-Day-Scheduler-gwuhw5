@@ -108,3 +108,8 @@ textarea {
 .customSaveBtn{
   width: 100%;
 }
+
+.customClearBtn{
+  margin: 0 1%;
+  background-color: red
+}
