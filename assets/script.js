@@ -118,7 +118,7 @@ function colorSetter(){
     }
 };
 
-setInterval(colorSetter, 2000);
+setInterval(colorSetter, 60000);
 
 
 initializer();
