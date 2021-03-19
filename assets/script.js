@@ -46,6 +46,7 @@ function initializer(){
     }
 
     renderAllStoredEvents();
+    colorSetter();
 }
 
 // This function will, upon clicking a save button, save to localstorage the corresponding list of events entered in the textarea adjacent to the button
@@ -123,4 +124,3 @@ setInterval(colorSetter, 2000);
 initializer();
 saveButtons.on("click", saveCurrentTimeEvents);
 clearButton.on("click", clearEvents);
-// console.log(moment().format("h"))
