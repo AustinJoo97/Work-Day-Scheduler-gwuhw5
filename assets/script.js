@@ -118,9 +118,8 @@ function colorSetter(){
     }
 };
 
-setInterval(colorSetter, 1000);
-
 
 initializer();
+setInterval(colorSetter, 1000);
 saveButtons.on("click", saveCurrentTimeEvents);
 clearButton.on("click", clearEvents);
