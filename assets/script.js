@@ -18,14 +18,14 @@ function initializer(){
         if(i === workDayTimes.length-1){
             timeStamps.append(`<li class="time-block hour customTimeStamps" style="border-bottom: 2px solid cyan">${workDayTimes[i]}</li>`);
 
-            dailyEvents.append(`<textarea id="hour${workDayHours[i]}" class="customScheduleInput hour${workDayHours[i]}" style="border-bottom: 2px solid red"></textarea>`);
+            dailyEvents.append(`<textarea class="customScheduleInput hour${workDayHours[i]}" style="border-bottom: 2px solid magenta"></textarea>`);
 
             saveButtons.append(`<button id="saveHour${workDayHours[i]}events" class="saveBtn customSaveBtn hour${workDayHours[i]}" style="border-bottom: 2px solid grey">&#128190</button>`)
             break;
         }
         timeStamps.append(`<li class="time-block hour customTimeStamps" id="hour${workDayTimes[i]}">${workDayTimes[i]}</li>`);
 
-        dailyEvents.append(`<textarea id="hour${workDayHours[i]}" class="customScheduleInput hour${workDayHours[i]}"></textarea>`);
+        dailyEvents.append(`<textarea class="customScheduleInput hour${workDayHours[i]}"></textarea>`);
 
         saveButtons.append(`<button id="saveHour${workDayHours[i]}events" class="saveBtn customSaveBtn hour${workDayHours[i]}">&#128190</button>`)
     }
@@ -89,7 +89,7 @@ function clearEvents(){
         hour4: "",
         hour5: ""
     }))
-    window.location.reload()
+    location.reload()
 }
 
 // This will take all the values from localstorage and render it to the DOM in the appropriate blocks
@@ -104,13 +104,23 @@ function renderAllStoredEvents(){
 
 // This set interval timer will run every 60 seconds (60000ms) to perform a check to see what the current time is
     // With each passing hour, the classes of the html dailyEvents item will be changed to correspond to the current time and show the correct colored background noting this change
-setInterval(function(){
+function colorSetter(){
+    let hourNow = Number(moment().format("h"));
+    let indexOfHourNow = workDayHours.indexOf(hourNow);
 
+    dailyEvents.find(`.hour${hourNow}`).addClass("present")
+    for(let i = 0; i < indexOfHourNow; i++){
+        dailyEvents.find(`.hour${workDayHours[i]}`).addClass("past");
+    };
+    for(let i = indexOfHourNow+1; i < workDayHours.length; i++){
+        dailyEvents.find(`.hour${workDayHours[i]}`).addClass("future");
+    }
+};
 
-    // NEED TO CODE THIS
-}, 60000);
+setInterval(colorSetter, 2000);
 
 
 initializer();
 saveButtons.on("click", saveCurrentTimeEvents);
 clearButton.on("click", clearEvents);
+// console.log(moment().format("h"))
