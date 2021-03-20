@@ -119,6 +119,8 @@ function colorSetter(){
         dailyEvents.find(`.hour${workDayHours[i]}`).removeClass("past");
         dailyEvents.find(`.hour${workDayHours[i]}`).addClass("future");
     }
+    dailyEvents.find(`.hour${hourNow}`).removeClass("past");
+    dailyEvents.find(`.hour${hourNow}`).removeClass("future");
     dailyEvents.find(`.hour${hourNow}`).addClass("present");
 };
 
