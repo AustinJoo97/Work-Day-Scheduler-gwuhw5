@@ -109,13 +109,17 @@ function colorSetter(){
     let hourNow = Number(moment().format("h"));
     let indexOfHourNow = workDayHours.indexOf(hourNow);
 
-    dailyEvents.find(`.hour${hourNow}`).addClass("present")
     for(let i = 0; i < indexOfHourNow; i++){
+        dailyEvents.find(`.hour${workDayHours[i]}`).removeClass("present");
+        dailyEvents.find(`.hour${workDayHours[i]}`).removeClass("future");
         dailyEvents.find(`.hour${workDayHours[i]}`).addClass("past");
     };
     for(let i = indexOfHourNow+1; i < workDayHours.length; i++){
+        dailyEvents.find(`.hour${workDayHours[i]}`).removeClass("present");
+        dailyEvents.find(`.hour${workDayHours[i]}`).removeClass("past");
         dailyEvents.find(`.hour${workDayHours[i]}`).addClass("future");
     }
+    dailyEvents.find(`.hour${hourNow}`).addClass("present");
 };
 
 
