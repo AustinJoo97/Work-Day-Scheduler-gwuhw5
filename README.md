@@ -17,4 +17,5 @@ Additionally, this application has the ability to change the color of each time 
 
 Finally, at the bottom of the page is a "Clear Schedule" button that will clear the schedule, clear all events that have been saved to the user's localStorage, as well as automatically refresh the page to save this change.
 
-## Demo
+## Project Demo
+![Daily Planner Demo GIF](./assets/demo/dayPlannerDemo.gif)
