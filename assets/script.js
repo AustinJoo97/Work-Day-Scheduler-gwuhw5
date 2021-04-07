@@ -3,7 +3,7 @@ let timeStamps = $('#timeStamps');
 let dailyEvents = $('#dailyEvents');
 let saveButtons = $('#saveButtons');
 let clearButton = $('#clearAllEvents');
-let workDayTimes = ['9AM', '10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM']
+let workDayTimes = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM']
 let workDayHours = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 
 
